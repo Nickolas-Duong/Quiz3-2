@@ -8,7 +8,8 @@
 //main function - argc and argv[]
 void main(int argc, char * argv[])
 {
-    if(argc == 2)
+    //If correct arguments
+    if(argc == 3)
     {
         //function prototypes
         PtrToMenu searchMenuByNumber(const Menu table[], int sizeTable, int numberToFind);
@@ -79,7 +80,8 @@ void main(int argc, char * argv[])
 
         EXIT_SUCCESS;
     }
-    else if (argc < 2 || argc > 2)
+    //If not correct
+    else if (argc < 3 || argc > 3)
     {
         printf("Incorrect Argument count\nArguments Needed: 2\nUsed as Tax and Tip\n");
         EXIT_FAILURE;
