@@ -30,6 +30,8 @@ void main(int argc, char * argv[])
     //set max order size
     maxOrder = (rand() % 4) + 1;
     
+    printf("ORDER RECIEPT\n\n");
+    
     //generate max order
     for(int i = 0; i < maxOrder; i++)
     {
