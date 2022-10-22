@@ -20,7 +20,7 @@ void main()
     //random generate how many items in array
     time_t t;
     PtrToMenu matchPtr;
-
+    double cost;
     srand((unsigned) time(&t));
 
     matchPtr = searchMenuByNumber(MenuTable, MenuTableEntries, (rand() % 4)+1);
@@ -28,6 +28,10 @@ void main()
     if (matchPtr != NULL)
     {
         printf("Menu number %d\n", matchPtr->menuNum);
+        printf("%s\n", matchPtr->menuName);
+        printf("Item Cost: %f\n", matchPtr->menuCost);
+
+        cost = cost + matchPtr->menuCost;
     }
     else
     {
@@ -41,6 +45,7 @@ void main()
     //print tip percent and total tip
 
     //print final bill cost
+    printf("Total: %f\n", cost);
     
     EXIT_SUCCESS;
 }
