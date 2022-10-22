@@ -3,6 +3,7 @@
 #include <time.h>
 #include <string.h>
 #include <stdlib.h>
+#include <math.h>
 #include "Bill.h"
 
 //main function - argc and argv[]
@@ -48,7 +49,7 @@ void main(int argc, char * argv[])
                 printf("Menu number                       %d\n", matchPtr->menuNum);
                 
                 printf("%s\n", matchPtr->menuName);
-                printf("Item Cost:                        $%f\n\n", matchPtr->menuCost);
+                printf("Item Cost:                        $%.2f\n\n", matchPtr->menuCost);
 
                 //increase cost
                 cost = cost + matchPtr->menuCost;
@@ -62,7 +63,7 @@ void main(int argc, char * argv[])
         }
 
         printf("Total Items:                      %d\n", count);
-        printf("Subtotal:                         $%f\n", cost);
+        printf("Subtotal:                         $%.2f\n", cost);
         
         //declare local variable for tax percent based on inputs -> if no input assume 0
         tax = atof(argv[1]);
@@ -71,13 +72,13 @@ void main(int argc, char * argv[])
         tip = atof(argv[2]);
 
         //print tax percent and total tax
-        printf("Tax Percent:                      %f%%\nTax:                              $%f\n", tax, tax*cost);
+        printf("Tax Percent:                      %.5f%%\nTax:                              $%.2f\n", tax, tax*cost);
 
         //print tip percent and total tip
-        printf("Tip Percent:                      %f%%\nTip:                              $%f\n", tip, tip*cost);
+        printf("Tip Percent:                      %.5f%%\nTip:                              $%.2f\n", tip, tip*cost);
         
         //print final bill cost
-        printf("Total:                            $%f\n", cost+(tax*cost)+(tip*cost));
+        printf("Total:                            $%.2f\n", cost+(tax*cost)+(tip*cost));
 
         EXIT_SUCCESS;
     }
