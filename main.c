@@ -20,25 +20,40 @@ void main(int argc, char * argv[])
     //random generate how many items in array
     time_t t;
     PtrToMenu matchPtr;
-    double cost;
+    int maxOrder;
+    double cost = 0;
     double tax, tip;
 
+    //Randomize random
     srand((unsigned) time(&t));
-
-    matchPtr = searchMenuByNumber(MenuTable, MenuTableEntries, (rand() % 4)+1);
- 
-    if (matchPtr != NULL)
+    
+    //set max order size
+    maxOrder = (rand() % 10) + 1;
+    
+    //generate max order
+    for(int i = 0; i < maxOrder; i++)
     {
-        printf("Menu number %d\n", matchPtr->menuNum);
-        printf("%s\n", matchPtr->menuName);
-        printf("Item Cost: %f\n", matchPtr->menuCost);
+        //get menu item
+        matchPtr = searchMenuByNumber(MenuTable, MenuTableEntries, (rand() % 4)+1);
 
-        cost = cost + matchPtr->menuCost;
+        //if found
+        if (matchPtr != NULL)
+        {
+            //print item information
+            printf("Menu number %d\n", matchPtr->menuNum);
+            printf("%s\n", matchPtr->menuName);
+            printf("Item Cost: $%f\n\n", matchPtr->menuCost);
+
+            //increase cost
+            cost = cost + matchPtr->menuCost;
+        }
+        //if not found
+        else
+        {
+            printf("Menu number not found\n");
+        }
     }
-    else
-    {
-        printf("Menu number not found\n");
-    }
+
     //declare local variable for tax percent based on inputs -> if no input assume 0
     tax = atof(argv[1]);
     
@@ -46,13 +61,13 @@ void main(int argc, char * argv[])
     tip = atof(argv[2]);
 
     //print tax percent and total tax
-    printf("Tax Percent: %f\nTax: %f\n", tax, tax*cost);
+    printf("Tax Percent: %f\nTax: $%f\n", tax, tax*cost);
 
     //print tip percent and total tip
-    printf("Tip Percent: %f\nTip: %f\n", tip, tip*cost);
+    printf("Tip Percent: %f\nTip: $%f\n", tip, tip*cost);
     
     //print final bill cost
-    printf("Total: %f\n", cost+(tax*cost)+(tip*cost));
+    printf("Total: $%f\n", cost+(tax*cost)+(tip*cost));
 
     EXIT_SUCCESS;
 }
