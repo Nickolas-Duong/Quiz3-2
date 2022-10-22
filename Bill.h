@@ -22,6 +22,5 @@ typedef struct
 }Menu, *PtrToMenu;
 //Pointer info to link ptrs
 typedef const Menu *PtrToConstMenu;
-//Function Definitions used in the 
 
 #endif
