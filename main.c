@@ -20,7 +20,7 @@ void main(int argc, char * argv[])
     //random generate how many items in array
     time_t t;
     PtrToMenu matchPtr;
-    int maxOrder;
+    int maxOrder, count;
     double cost = 0;
     double tax, tip;
 
@@ -28,7 +28,7 @@ void main(int argc, char * argv[])
     srand((unsigned) time(&t));
     
     //set max order size
-    maxOrder = (rand() % 10) + 1;
+    maxOrder = (rand() % 4) + 1;
     
     //generate max order
     for(int i = 0; i < maxOrder; i++)
@@ -46,6 +46,7 @@ void main(int argc, char * argv[])
 
             //increase cost
             cost = cost + matchPtr->menuCost;
+            count++;
         }
         //if not found
         else
@@ -54,6 +55,9 @@ void main(int argc, char * argv[])
         }
     }
 
+    printf("Total Items: %d\n", count);
+    printf("Subtotal: %f\n", cost);
+    
     //declare local variable for tax percent based on inputs -> if no input assume 0
     tax = atof(argv[1]);
     
