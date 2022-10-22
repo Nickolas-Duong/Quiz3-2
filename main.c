@@ -46,13 +46,13 @@ void main(int argc, char * argv[])
     tip = atof(argv[2]);
 
     //print tax percent and total tax
-    printf("Tax: %f\n", tax);
+    printf("Tax: %f\n", tax*cost);
 
     //print tip percent and total tip
-    printf("Tip: %f\n", tip);
+    printf("Tip: %f\n", tip*cost);
     
     //print final bill cost
-    printf("Total: %f\n", cost);
+    printf("Total: %f\n", cost+(tax*cost)+(tip*cost));
 
     EXIT_SUCCESS;
 }
