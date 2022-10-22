@@ -6,7 +6,7 @@
 #include "Bill.h"
 
 //main function - argc and argv[]
-void main()
+void main(int argc, char * argv[])
 {
     //function prototypes
     PtrToMenu searchMenuByNumber(const Menu table[], int sizeTable, int numberToFind);
@@ -21,6 +21,8 @@ void main()
     time_t t;
     PtrToMenu matchPtr;
     double cost;
+    double tax, tip;
+
     srand((unsigned) time(&t));
 
     matchPtr = searchMenuByNumber(MenuTable, MenuTableEntries, (rand() % 4)+1);
@@ -38,14 +40,19 @@ void main()
         printf("Menu number not found\n");
     }
     //declare local variable for tax percent based on inputs -> if no input assume 0
+    tax = atof(argv[1]);
+    
     //declare local variable for tip percent based on inputs -> if no input assume 0
+    tip = atof(argv[2]);
 
     //print tax percent and total tax
+    printf("Tax: %f\n", tax);
 
     //print tip percent and total tip
-
+    printf("Tip: %f\n", tip);
+    
     //print final bill cost
     printf("Total: %f\n", cost);
-    
+
     EXIT_SUCCESS;
 }
